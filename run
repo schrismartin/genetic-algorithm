@@ -38,6 +38,7 @@ do
 
 	./proj5 $l $n $G $pm $pc >> $loc
 	echo $'\n' >> $loc
+	echo $'\n' >> $loc
 
 	cat $loc >> ${dirname}"master.csv"
 done
