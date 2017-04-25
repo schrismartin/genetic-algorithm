@@ -11,20 +11,22 @@ import Foundation
 struct Statistics {
     var averageFitness: Double
     var bestFitness: Double
-    var bestCorrect: Int
+    var bestCorrect: Double
     
     init(generation: Generation) {
         let members = generation.members
         
-        let fitnessValues = members.map { $0.fitnessValue() }
+        let fitnessValues = members.map { $0.fitnessValue }
         averageFitness = fitnessValues.reduce(0, +) / Double(fitnessValues.count)
         bestFitness = fitnessValues.max()!
         
         let indexOfMax = fitnessValues.index(of: bestFitness)!
         let bestMember = members[indexOfMax]
-        bestCorrect = bestMember.contents.reduce(0) { (prev, bit) -> Int in
-            prev + Int(bit.rawValue)
-        }
+        
+        let sum = members.reduce(0, { (prev, string) -> Int in
+            prev + string.oneBits()
+        })
+        bestCorrect = Double(sum) / Double(members.count)
     }
 }
 

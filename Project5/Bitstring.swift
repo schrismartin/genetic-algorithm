@@ -23,8 +23,20 @@ struct BitString: Hashable {
         return pow(Double(x) / (pow(2, Double(n)) as Double), 10.0)
     }
     
+    var customFitnessFunction: FitnessFunction?
+    
     /// The contents of the bitstring, as a zero or one
     var contents: [Bit]
+    
+    func oneBits() -> Int {
+        return contents.reduce(0) { (prev, bit) -> Int in
+            prev + Int(bit.rawValue)
+        }
+    }
+    
+    func zeroBits() -> Int {
+        return contents.count - oneBits()
+    }
     
     /// Calculate the numeric value for a BitString
     var numericValue: Int {
@@ -40,11 +52,9 @@ struct BitString: Hashable {
         return value
     }
     
-    /// Get the fitness value of the bitstring given a fitness function.
-    ///
-    /// - Parameter equation: Fitness Function for the bitstring. Uses the default equation of `(x / n ^ 2) ^ 10`
-    /// - Returns: The fitness value of the bitstring.
-    func fitnessValue(using equation: FitnessFunction = BitString.defaultFunction) -> Double {
+    /// Fitness value of the bitstring given a fitness function.
+    var fitnessValue: Double {
+        let equation = customFitnessFunction ?? BitString.defaultFunction
         return equation(numericValue, contents.count)
     }
     
@@ -78,7 +88,8 @@ struct BitString: Hashable {
     /// Create a new bitstring with a certain size.
     ///
     /// - Parameter size: Number of bits in the bitstring.
-    init(size: Int) {
+    init(size: Int, function: FitnessFunction? = nil) {
+        customFitnessFunction = function
         
         // Fill Contents
         contents = [Bit]()
@@ -90,7 +101,9 @@ struct BitString: Hashable {
     /// Initialize the bitstring with an array of bits.
     ///
     /// - Parameter contents: Constituent array of bits
-    init(contents: [Bit]) {
+    init(contents: [Bit], function: FitnessFunction? = nil) {
+        customFitnessFunction = function
+        
         // Mirror the contents to the Bitstring
         self.contents = contents
     }

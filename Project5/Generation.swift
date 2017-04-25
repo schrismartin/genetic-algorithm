@@ -15,6 +15,8 @@ struct Generation {
     var pc: Double
     var pm: Double
     
+    var customFitnessFunction: FitnessFunction?
+    
     /// The next Generation
     var next: Generation {
         return Generation(previous: self, pc: pc, pm: pm)
@@ -32,11 +34,11 @@ struct Generation {
     ///   - size: The number of bits in each BitString
     ///   - pc: Probability of Combination
     ///   - pm: Probability of Mutation
-    init(count: Int, size: Int, pc: Double, pm: Double) {
+    init(count: Int, size: Int, pc: Double, pm: Double, function: FitnessFunction? = nil) {
         var members = [BitString]()
         
         for _ in 0 ..< count {
-            let bitstring = BitString(size: size)
+            let bitstring = BitString(size: size, function: function)
             members.append(bitstring)
         }
         
@@ -79,14 +81,14 @@ struct Generation {
         self.pm = pm
         
         let sum: Double = members.reduce(0) { (prev, bitstring) -> Double in
-            return prev + bitstring.fitnessValue()
+            return prev + bitstring.fitnessValue
         }
         
         values = []
         
         // Calculate normalized values
         for bitstring in members {
-            let fitnessValue = bitstring.fitnessValue()
+            let fitnessValue = bitstring.fitnessValue
             
             let normalizedFitness = BitString.normalized(fitness: fitnessValue, relatedToSum: sum)
             values.append(normalizedFitness + (values.last ?? 0))

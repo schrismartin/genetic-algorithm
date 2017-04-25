@@ -12,6 +12,12 @@ class MainApplication {
     
     var args: Arguments
     
+    static let customFunction: FitnessFunction = {
+        (_ x: Int, _ n: Int) -> Double in
+        
+        return pow(Double(x) / (pow(2, Double(n)) as Double), 10.0)
+    }
+    
     /// Runs the program from the passed command-line arguments
     ///
     /// - Parameter args: Command-line arguments
@@ -23,7 +29,8 @@ class MainApplication {
             count: self.args.n,
             size: self.args.l,
             pc: self.args.pc,
-            pm: self.args.pm
+            pm: self.args.pm,
+            function: MainApplication.customFunction
         )
         
         for iteration in 0 ..< self.args.g {
