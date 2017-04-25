@@ -1,29 +1,37 @@
 #!/bin/bash
+thing=$0
+l=$1
+n=$2
+G=$3
+pn=$4
+pc=$5
+name=$6
+run_size=$7
 
 echo -n "Number of Genes (l): "
-read l
+echo $l
 echo -n "Population size (n): "
-read n
+echo $n
 echo -n "Generations (G): "
-read G
+echo $G
 echo -n "Probability of Mutation (pm): "
-read pm
+echo $pm
 echo -n "Probability of Crossover (pc): "
-read pc
+echo $pc
 echo -n "Name of Experiment: "
-read name
+echo $name
 echo -n "Number of runs: "
-read run_size
+echo $run_size
 
-mkdir $name
-dirname=${name}"/"
+mkdir "Experiments/"$name
+dirname="Experiments/"${name}"/"
 
 for i in $(seq 1 $run_size)
 do
 	f="run"${i}
 	filename=${f}".csv"
 
-	loc=${dirname}${filename}
+	loc="${dirname}${filename}
 	echo $loc
 	echo "Avg Gen Fitness, Highest Gen Fitness, Avg # of Correct Bits," > $loc
 
