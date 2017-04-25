@@ -105,7 +105,6 @@ struct Generation {
         }
     }
     
-    
     /// Randomly select two parents
     ///
     /// - Parameters:
