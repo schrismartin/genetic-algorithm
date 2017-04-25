@@ -1,0 +1,49 @@
+#!/bin/bash
+
+l=$1
+n=$2
+G=$3
+pm=$4
+pc=$5
+name=$6
+run_size=$7
+
+
+echo -n "Number of Genes (l): "
+echo $l
+echo -n "Population size (n): "
+echo $n
+echo -n "Generations (G): "
+echo $G
+echo -n "Probability of Mutation (pm): "
+echo $pm
+echo -n "Probability of Crossover (pc): "
+echo $pc
+echo -n "Name of Experiment: "
+echo $name
+echo -n "Number of runs: "
+echo $run_size
+
+
+mkdir $name
+dirname=${name}"/"
+
+for i in $(seq 1 $run_size)
+do
+	f="run"${i}
+	filename=${f}".csv"
+
+	loc=${dirname}${filename}
+	echo $loc	
+	echo "Avg Gen Fitness, Highest Gen Fitness, Avg # of Correct Bits," > $loc
+
+	./proj5 $l $n $G $pm $pc >> $loc
+	echo " " >> $loc
+	echo " " >> $loc
+	
+	cat $loc >> ${dirname}"master.csv"
+done
+
+
+
+
