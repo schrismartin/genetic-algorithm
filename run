@@ -4,7 +4,7 @@
 l=$1
 n=$2
 G=$3
-pn=$4
+pm=$4
 pc=$5
 name=$6
 run_size=$7
