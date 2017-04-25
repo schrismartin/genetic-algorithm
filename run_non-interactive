@@ -1,13 +1,13 @@
 #!/bin/bash
-#by: Shields
 
 l=$1
 n=$2
 G=$3
-pn=$4
+pm=$4
 pc=$5
 name=$6
 run_size=$7
+
 
 echo -n "Number of Genes (l): "
 echo $l
@@ -24,20 +24,26 @@ echo $name
 echo -n "Number of runs: "
 echo $run_size
 
-mkdir "Experiments/"$name
-dirname="Experiments/"${name}"/"
+
+mkdir $name
+dirname=${name}"/"
 
 for i in $(seq 1 $run_size)
 do
 	f="run"${i}
 	filename=${f}".csv"
 
-	loc="${dirname}${filename}
-	echo $loc
+	loc=${dirname}${filename}
+	echo $loc	
 	echo "Avg Gen Fitness, Highest Gen Fitness, Avg # of Correct Bits," > $loc
 
 	./proj5 $l $n $G $pm $pc >> $loc
-	echo $'\n' >> $loc
-
+	echo " " >> $loc
+	echo " " >> $loc
+	
 	cat $loc >> ${dirname}"master.csv"
 done
+
+
+
+
