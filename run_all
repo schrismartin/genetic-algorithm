@@ -1,0 +1,17 @@
+#!/bin/bash
+#by: schrismartin
+
+# Base
+./run 20 30 10 0.033 0.6 Base 10
+
+./run 5 30 10 0.033 0.6 Genes_05
+./run 40 30 10 0.033 0.6 Genes_40
+
+./run 20 10 10 0.033 0.6 Population_10 10
+./run 20 50 10 0.033 0.6 Population_50 10
+
+./run 20 30 10 0 0.6 Mutation_0 10
+./run 20 30 10 1 0.6 Mutation_1 10
+
+./run 20 30 10 0.033 0 Combination_0 10
+./run 20 30 10 0.033 1 Combination_1 10

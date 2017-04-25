@@ -24,17 +24,17 @@ echo $name
 echo -n "Number of runs: "
 echo $run_size
 
-mkdir "Experiments/"$name
-dirname="Experiments/"${name}"/"
+mkdir $name
+dirname=${name}"/"
 
 for i in $(seq 1 $run_size)
 do
 	f="run"${i}
 	filename=${f}".csv"
 
-	loc="${dirname}${filename}
+	loc=${dirname}${filename}
 	echo $loc
-	echo "Avg Gen Fitness, Highest Gen Fitness, Avg # of Correct Bits," > $loc
+	echo "Avg Gen Fitness, Highest Gen Fitness, Avg # of Correct Bits" > $loc
 
 	./proj5 $l $n $G $pm $pc >> $loc
 	echo $'\n' >> $loc
