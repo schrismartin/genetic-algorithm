@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#By: Shields
 echo -n "Number of Genes (l): "
 read l
 echo -n "Population size (n): "
