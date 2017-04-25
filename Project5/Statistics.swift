@@ -8,11 +8,22 @@
 
 import Foundation
 
+
+/// Staticstics for a given `Generation`
 struct Statistics {
-    var averageFitness: Double
-    var bestFitness: Double
-    var bestCorrect: Double
     
+    /// The average fitness of a generation
+    var averageFitness: Double
+    
+    /// The highest fitness value in a generation
+    var bestFitness: Double
+    
+    /// The average number of ones per `BitString` in a population
+    var averageCorrect: Double
+    
+    /// Create a new Statistics object describing a given `Generation`
+    ///
+    /// - Parameter generation: Subject Generation to analyze
     init(generation: Generation) {
         let members = generation.members
         
@@ -20,18 +31,15 @@ struct Statistics {
         averageFitness = fitnessValues.reduce(0, +) / Double(fitnessValues.count)
         bestFitness = fitnessValues.max()!
         
-        let indexOfMax = fitnessValues.index(of: bestFitness)!
-        let bestMember = members[indexOfMax]
-        
         let sum = members.reduce(0, { (prev, string) -> Int in
             prev + string.oneBits()
         })
-        bestCorrect = Double(sum) / Double(members.count)
+        averageCorrect = Double(sum) / Double(members.count)
     }
 }
 
 extension Statistics: CustomStringConvertible {
     var description: String {
-        return "\(averageFitness), \(bestFitness), \(bestCorrect)"
+        return "\(averageFitness), \(bestFitness), \(averageCorrect)"
     }
 }

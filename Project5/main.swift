@@ -8,10 +8,13 @@
 
 import Foundation
 
+/// Application to be run
 class MainApplication {
     
+    /// Command-line Arguments
     var args: Arguments
     
+    /// Custom Fitness Function, if modified
     static let customFunction: FitnessFunction = {
         (_ x: Int, _ n: Int) -> Double in
         

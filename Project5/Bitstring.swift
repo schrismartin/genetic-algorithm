@@ -23,17 +23,26 @@ struct BitString: Hashable {
         return pow(Double(x) / (pow(2, Double(n)) as Double), 10.0)
     }
     
+    /// User-defined fitness function
     var customFitnessFunction: FitnessFunction?
     
     /// The contents of the bitstring, as a zero or one
     var contents: [Bit]
     
+    
+    /// The number of one-bits in the BitString
+    ///
+    /// - Returns: Count of one-bits in the BitString
     func oneBits() -> Int {
         return contents.reduce(0) { (prev, bit) -> Int in
             prev + Int(bit.rawValue)
         }
     }
     
+    
+    /// The number of zero-bits in the BitString
+    ///
+    /// - Returns: Count of zero-bits in the BitString
     func zeroBits() -> Int {
         return contents.count - oneBits()
     }
@@ -68,6 +77,22 @@ struct BitString: Hashable {
         return fitness / sum
     }
     
+    
+    /// Create two child BitStrings from a randomly decided separator between
+    /// splitting the parent BitStrings
+    ///
+    /// ```
+    /// // Randomly select a range, in this case, between char 1 and 2.
+    /// parent: 01|001011 10|110100
+    ///
+    /// // And switch after separator
+    /// child: 10|110100 10|001011
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - lhs: Left BitString
+    ///   - rhs: Right BitString
+    /// - Returns: Array of two resulting BitStrings
     static func ><(lhs: BitString, rhs: BitString) -> [BitString] {
         let cardinality = lhs.contents.count
         let index = Int(arc4random_uniform(UInt32(cardinality)))

@@ -1,0 +1,33 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/schrismartin/Documents/School/Spring2017/BioInspired/Project5/Project5/Bit.swift",
+      "line": 16,
+      "symbol": "Bit.zero",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/schrismartin/Documents/School/Spring2017/BioInspired/Project5/Project5/Bit.swift",
+      "line": 17,
+      "symbol": "Bit.one",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/schrismartin/Documents/School/Spring2017/BioInspired/Project5/Project5/Utils.swift",
+      "line": 24,
+      "symbol": "AppError.Arguments.badArgc",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/schrismartin/Documents/School/Spring2017/BioInspired/Project5/Project5/Utils.swift",
+      "line": 25,
+      "symbol": "AppError.Arguments.badArgv",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/schrismartin/Documents/School/Spring2017/BioInspired/Project5"
+}

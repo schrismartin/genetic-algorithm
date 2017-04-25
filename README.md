@@ -1,4 +1,6 @@
 ## Genetic Algorithm
+![](docs/badge.svg)
+
 Genetic Algorithm created for Dr. MacLennan's Biologically Inspired Computation course at the University of Tennessee
 
 ## Usage

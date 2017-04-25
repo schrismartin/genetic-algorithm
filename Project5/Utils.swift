@@ -9,6 +9,11 @@
 import Foundation
 import Darwin
 
+
+/// Errors thrown during the lifetime of the application
+///
+/// - badArgc: Incorrect number of arguments
+/// - badArgv: Unexpected argument sequence
 enum AppError: Error {
     
     /// Errors relating to command-line argument parsing
@@ -47,6 +52,10 @@ class Utils {
 
 extension Bool {
     
+    /// Initialize a boolean value as the result of a random-number-generator 
+    /// falling within the range of the probability.
+    ///
+    /// - Parameter probability: Probability of calculating true
     init?(probability: Double) {
         guard (0.0...1.0).contains(probability) else {
             return nil

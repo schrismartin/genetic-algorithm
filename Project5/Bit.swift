@@ -41,6 +41,10 @@ extension Bit: CustomStringConvertible {
 }
 
 extension Int {
+    
+    /// Initialize an integer based on the rawValue of a Bit
+    ///
+    /// - Parameter bit: Subject `Bit`
     init(_ bit: Bit) {
         self = Int(bit.rawValue)
     }

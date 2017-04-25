@@ -8,13 +8,23 @@
 
 import Foundation
 
+/// A population of BitStrings representing a single generation in a genetic altorithm
 struct Generation {
     
+    /// The `BitStrings` that constitute the population
     var members: [BitString]
+    
+    /// The normalized fitness ranges used for parent selection
     var values: [Double]
+    
+    /// Probability of Combination
     var pc: Double
+    
+    /// Probability of Mutation
     var pm: Double
     
+    /// User-defined fitness function, allowing for greater control over
+    /// the outcome of the simulation.
     var customFitnessFunction: FitnessFunction?
     
     /// The next Generation
